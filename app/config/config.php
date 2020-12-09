@@ -4,7 +4,7 @@
  * BASEURL
  */
 
-define('BASEURL', 'http://localhost:8888/gis_population/public');
+define('BASEURL', 'http://localhost:8888/gis_doan/public');
 
 /**
  * DATABASE Connection
