@@ -5,7 +5,7 @@ class populationController extends Controller {
 	public function index()
 	{		
 		$data['title'] = 'Dân số';
-        $data['district'] = $this->model('Population')->getAllCommune();
+        $data['commune'] = $this->model('Population')->getAllCommune();
 		$data['population'] = $this->model('Population')->getAll();
 
 		$this->view('templates/header', $data);
@@ -24,10 +24,11 @@ class populationController extends Controller {
 	public function store()
 	{
         $name  = $_POST['name'];
-        $district_id  = $_POST['district_id'];
-        $acreage  = $_POST['acreage'];
+		$commune_id  = $_POST['commune_id'];
+		$time  = $_POST['time'];
+        $count  = $_POST['count'];
         
-        $this->model('Population')->store($name, $district_id, $acreage);
+        $this->model('Population')->store($name, $commune_id, $time, $count);
 		$this->redirect('population');
 	}
 
@@ -42,13 +43,14 @@ class populationController extends Controller {
         $this->view('templates/footer');
 	}
 
-	public function update($id, $name, $commune_id, $acreage)
+	public function update($id, $name, $commune_id, $time, $count)
 	{
         $name  = $_POST['name'];
-        $commune_id  = $_POST['district_id'];
-        $acreage = $_POST['acreage'];
+        $commune_id  = $_POST['commune_id'];
+		$time = $_POST['time'];
+		$count = $_POST['count'];
 
-		$this->model('Population')->update($id, $name, $commune_id, $acreage);
+		$this->model('Population')->update($id, $name, $commune_id, $time, $count);
 
 		$this->redirect('population');
 	}

@@ -1,5 +1,4 @@
 <?php
-require_once "../core/Controller.php";
 class provinceController extends Controller {
 
 	public function index()

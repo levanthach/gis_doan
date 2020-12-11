@@ -46,13 +46,4 @@ class Province {
 		return $this->db->execute();
 	}
 
-	public function insertFromExcel($id, $name) {
-		$this->db->query("INSERT INTO {$this->table} (id, name) VALUES (:id, :name)");
-		
-        $this->db->bind(':id', $id);
-        $this->db->bind(':name', $name);
-
-		return $this->db->execute();
-	}
-
 }

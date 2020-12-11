@@ -1,8 +1,10 @@
 <?php
 //Nhúng file PHPExcel
 require_once "../../public/assets/lib/PHPExcel/Classes/PHPExcel.php";
-require_once "./provinceController.php";
+require_once "../config/config.php";
 
+// GET parameter CLI in PHOP
+parse_str(implode('&', array_slice($argv, 1)), $_GET);
 //Đường dẫn file
 $file = '../import_data/Data_GIS.xlsx';
 //Tiến hành xác thực file
@@ -19,7 +21,7 @@ $objPHPExcel = $objData->load($file);
 // Lấy Ra tên trang sử dụng getSheetNames();
 
 //Chọn trang cần truy xuất
-$sheet = $objPHPExcel->setActiveSheetIndex(2);
+$sheet = $objPHPExcel->setActiveSheetIndex($_GET['tab']);
 
 //Lấy ra số dòng cuối cùng
 $Totalrow = $sheet->getHighestRow();
@@ -43,12 +45,49 @@ for ($i = 2; $i <= $Totalrow; $i++) {
     }
 }
 
-echo "<pre>";
-print_r($data);
-// GET parameter CLI in PHOP
-// parse_str(implode('&', array_slice($argv, 1)), $_GET);
+$servername = DB_HOST;
+$username = DB_USER;
+$password = DB_PASS;
+$dbname = DB_NAME;
 
-// $importPro = new provinceController();
-// // $importPro->insertFromExcel();
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  switch ($_GET['table']) {
+        case "province":
+            foreach ($data as $improt_data) {
+                $sql = "INSERT INTO " . $_GET['table'] . "(id, name)
+                VALUES (" . $improt_data[0] . ",'" . $improt_data[1] . "')";
+                $conn->exec($sql);  
+            }
+            break;
+        case "district": 
+            foreach ($data as $improt_data) {
+                $sql = 'INSERT INTO ' . $_GET['table'] . '(id, province_id, name)
+                VALUES (' . $improt_data[0] . ',' . $improt_data[1] . ',"' . $improt_data[2] . '")';
+                $conn->exec($sql);  
+            }
+            break;
+        case "commune": 
+            foreach ($data as $improt_data) {
+                $sql = 'INSERT INTO ' . $_GET['table'] . '(id, district_id, name, acreage)
+                VALUES (' . $improt_data[0] . ',' . $improt_data[1] . ',"' . $improt_data[2] . '",' . $improt_data[3] . ')';
+                $conn->exec($sql);
+            }
+            break;
+        case "population": 
+            foreach ($data as $improt_data) {
+                $sql = "INSERT INTO " . $_GET['table'] . "(id, commune_id, time, count)
+                VALUES (" . $improt_data[0] . "," . $improt_data[1] . "," . $improt_data[2] . "," . $improt_data[3] . ")";
+                $conn->exec($sql);
+            }
+            break;
+  }
 
-// $importPro->import($data[0], $data[1]);
+  echo "Insert successfully";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
