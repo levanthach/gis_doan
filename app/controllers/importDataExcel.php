@@ -79,6 +79,20 @@ try {
         case "population": 
             foreach ($data as $improt_data) {
                 $sql = "INSERT INTO " . $_GET['table'] . "(id, commune_id, time, count)
+                VALUES (" . $improt_data[0] . "," . $improt_data[1] . ")";
+                $conn->exec($sql);
+            }
+            break;
+        case "polygon": 
+            foreach ($data as $improt_data) {
+                $sql = 'INSERT INTO ' . $_GET['table'] . '(id, commune_id)
+                VALUES (' . $improt_data[0] . ',' . $improt_data[1] . ')';
+                $conn->exec($sql);
+            }
+            break;
+        case "point": 
+            foreach ($data as $improt_data) {
+                $sql = "INSERT INTO " . $_GET['table'] . "(id, polygon_id, longs, lats)
                 VALUES (" . $improt_data[0] . "," . $improt_data[1] . "," . $improt_data[2] . "," . $improt_data[3] . ")";
                 $conn->exec($sql);
             }
