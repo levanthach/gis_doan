@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Mật độ dân số vùng Tây Nguyên</title>
+  <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
   <style>
     html, body, #viewDiv {
       padding: 0;
@@ -35,8 +35,8 @@
 		var view = new MapView({
 		container: "viewDiv",
 		map: map,
-		center: [106.8033387, 10.8739831],
-		zoom: 16,
+		center: [107.9860458374, 14.389535903931],
+		zoom: 12,
           highlightOptions: {
             color: "blue"
           }
@@ -47,18 +47,19 @@
           },
           responseType: "json"
         };
-		esriRequest('api.php?name=spaghetti_json', options).then(function (response) {
-			var graphicsLayer = new GraphicsLayer();
-            //console.log("response", response);
-            response.data.forEach(function(graphicJson){
-	            var gp = new Graphic(graphicJson);
-				graphicsLayer.add(gp);
-            });
-			map.add(graphicsLayer);
-		});
+		// esriRequest('api.php?name=spaghetti_json', options).then(function (response) {
+		// 	var graphicsLayer = new GraphicsLayer();
+    //         //console.log("response", response);
+    //         response.data.forEach(function(graphicJson){
+	  //           var gp = new Graphic(graphicJson);
+		// 		graphicsLayer.add(gp);
+    //         });
+		// 	map.add(graphicsLayer);
+		// });
 		const geojsonLayer = new GeoJSONLayer({
           url: "api.php?name=spaghetti_geojson"
         });
+        console.log(url);
         geojsonLayer.renderer = {
           type: "simple",
           symbol: {

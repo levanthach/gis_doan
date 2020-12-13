@@ -79,7 +79,7 @@ try {
         case "population": 
             foreach ($data as $improt_data) {
                 $sql = "INSERT INTO " . $_GET['table'] . "(id, commune_id, time, count)
-                VALUES (" . $improt_data[0] . "," . $improt_data[1] . ")";
+                VALUES (" . $improt_data[0] . "," . $improt_data[1] . "," . $improt_data[2] . "," . $improt_data[3] . ")";
                 $conn->exec($sql);
             }
             break;

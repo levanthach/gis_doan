@@ -3,7 +3,7 @@ class GeoJsonUtil {
     public static function generate2DPolygon($attribute, $exitedPolygon = null)
     {
         if (!empty($exitedPolygon)) {
-            $exitedPolygon['geometry']['coordinates'][0][] = array(floatval($attribute['x']), floatval($attribute['y']));
+            $exitedPolygon['geometry']['coordinates'][0][] = array(floatval($attribute['longs']), floatval($attribute['lats']));
             return $exitedPolygon;
         }
         return array(
@@ -13,11 +13,11 @@ class GeoJsonUtil {
                 "type" => "Polygon",
                 "coordinates" => array(
                     array (
-                        array(floatval($attribute['x']), floatval($attribute['y']))
+                        array(floatval($attribute['longs']), floatval($attribute['lats']))
                     )
                 )
             ),
-            "id" => "pp".$attribute['idpo']
+            "id" => "pp".$attribute['id']
         );
     }
 }

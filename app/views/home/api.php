@@ -1,11 +1,11 @@
 <?php
-include_once dirname(__FILE__) . '/app/gis2D/BaseConverter.php';
-include_once dirname(__FILE__) . '/app/gis2D/config.php';
-include_once dirname(__FILE__) . '/app/gis2D/Connection.php';
-include_once dirname(__FILE__) . '/app/gis2D/GraphicUtil.php';
-include_once dirname(__FILE__) . '/app/gis2D/GeoJsonUtil.php';
-include_once dirname(__FILE__) . '/app/gis2D/SpaghettiJsonConverter.php';
-include_once dirname(__FILE__) . '/app/gis2D/SpaghettiGeoJsonConverter.php';
+require_once "../../gis2D/BaseConverter.php";
+require_once "../../gis2D/Connection.php";
+require_once "../../gis2D/GraphicUtil.php";
+require_once "../../gis2D/GeoJsonUtil.php";
+require_once "../../gis2D/SpaghettiJsonConverter.php";
+require_once "../../gis2D/SpaghettiGeoJsonConverter.php";
+
 function print_json_response($object) {
     header ( 'Content-Type: application/json' );
     return json_encode($object);
