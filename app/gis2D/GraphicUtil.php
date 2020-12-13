@@ -39,7 +39,7 @@ class GraphicUtil
             "geometry" => array (
                 "type"=>"polyline",
                 "paths"=> array (
-                    array($attribute['x'], $attribute['y'])
+                    array($`attribute`['x'], $attribute['y'])
                 )
             ),
             "symbol" => array(

@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
+  <title>Mật độ dân số vùng Tây Nguyên</title>
   <style>
     html, body, #viewDiv {
       padding: 0;
