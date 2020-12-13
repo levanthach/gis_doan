@@ -35,7 +35,7 @@
 		var view = new MapView({
 		container: "viewDiv",
 		map: map,
-		center: [107.9860458374, 14.389535903931],
+		center: [107.99404907227, 14.368187904358],
 		zoom: 12,
           highlightOptions: {
             color: "blue"
@@ -76,6 +76,31 @@
   </script>
 </head>
 <body>
+<div class="wrapper"> 
+  <div class="top-bar">
+    <div class="select-option">
+      <label for="province">Chọn tỉnh:</label>
+      <select id="province">
+        <option value="volvo">Volvo</option>
+      </select>
+
+      <label for="district">Chọn huyện:</label>
+      <select id="district">
+        <option value="volvo">Volvo</option>
+      </select>
+
+      <label for="commune">Chọn xã:</label>
+      <select id="commune">
+        <option value="volvo">Volvo</option>
+      </select>
+      <span style="float: right;">
+            <label for="time">Thời gian:</label>
+            <select id="time">
+              <option value="volvo">Volvo</option>
+            </select>
+      </span>
+  </div>
   <div id="viewDiv"></div>
+</div>
 </body>
 </html>
