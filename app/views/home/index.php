@@ -57,9 +57,8 @@
 		// 	map.add(graphicsLayer);
 		// });
 		const geojsonLayer = new GeoJSONLayer({
-          url: "api.php?name=spaghetti_geojson"
+          url: "../app/views/home/api.php?name=spaghetti_geojson"
         });
-        console.log(url);
         geojsonLayer.renderer = {
           type: "simple",
           symbol: {
