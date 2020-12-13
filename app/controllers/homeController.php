@@ -5,10 +5,9 @@ class homeController extends Controller{
 	public function index()
 	{
 		$data['title'] = 'Mật độ dân số vùng Tây Nguyên';
-		// $data['nama'] = $this->model('User')->getUser();
+		$data['province'] = $this->model('Province')->getAll();
+		$data['time'] = $this->model('Population')->getTime();
 
-		// $this->view('templates/header', $data);
-		$this->view('home/index');
-		//$this->view('templates/footer');
+		$this->view('home/index', $data);
 	}
 }

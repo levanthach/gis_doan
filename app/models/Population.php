@@ -15,6 +15,12 @@ class Population {
 	{
 		$this->db->query("SELECT * FROM {$this->table}");
 		return $this->db->resultSet();
+	}
+	
+	public function getTime()
+	{
+		$this->db->query("SELECT DISTINCT time FROM {$this->table}");
+		return $this->db->resultSet();
     }
     
     public function getAllCommune()

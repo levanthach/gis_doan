@@ -81,7 +81,9 @@
     <div class="select-option">
       <label for="province">Chọn tỉnh:</label>
       <select id="province">
-        <option value="volvo">Volvo</option>
+        <?php foreach ($data['province'] as $key => $value): ?>
+          <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
+        <?php endforeach; ?>
       </select>
 
       <label for="district">Chọn huyện:</label>
@@ -96,11 +98,15 @@
       <span style="float: right;">
             <label for="time">Thời gian:</label>
             <select id="time">
-              <option value="volvo">Volvo</option>
+              <?php foreach ($data['time'] as $key => $value): ?>
+                <option value="<?= $value['time'] ?>"><?= $value['time'] ?></option>
+              <?php endforeach; ?>
             </select>
       </span>
   </div>
   <div id="viewDiv"></div>
 </div>
 </body>
+<script src="<?= BASEURL;  ?>/assets/js/jquery.min.js"></script>
+<script src="<?= BASEURL;  ?>/assets/js/custom.js"></script>
 </html>
