@@ -88,12 +88,16 @@
 
       <label for="district">Chọn huyện:</label>
       <select id="district">
-        <option value="volvo">Volvo</option>
+        <?php foreach ($data['district'] as $key => $value): ?>
+          <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
+        <?php endforeach; ?>
       </select>
 
       <label for="commune">Chọn xã:</label>
       <select id="commune">
-        <option value="volvo">Volvo</option>
+      <?php foreach ($data['commune'] as $key => $value): ?>
+          <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
+        <?php endforeach; ?>
       </select>
       <span style="float: right;">
             <label for="time">Thời gian:</label>
