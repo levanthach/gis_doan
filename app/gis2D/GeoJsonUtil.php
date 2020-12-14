@@ -8,7 +8,13 @@ class GeoJsonUtil {
         }
         return array(
             "type" => "Feature",
-            "properties" => $attribute,
+            "properties" => array (
+             "id" =>$attribute['polygon_id'],
+             "commune_id" => $attribute['commune_id'],
+             "time" => $attribute['time'],
+             "name" => $attribute['name'],
+             "density" => $attribute['density']
+            ),
             "geometry" => array (
                 "type" => "Polygon",
                 "coordinates" => array(
