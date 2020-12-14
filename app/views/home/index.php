@@ -80,21 +80,21 @@
   <div class="top-bar">
     <div class="select-option">
       <label for="province">Chọn tỉnh:</label>
-      <select id="province">
+      <select id="province" name="province">
         <?php foreach ($data['province'] as $key => $value): ?>
           <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
         <?php endforeach; ?>
       </select>
 
       <label for="district">Chọn huyện:</label>
-      <select id="district">
+      <select id="district" name="district">
         <?php foreach ($data['district'] as $key => $value): ?>
           <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
         <?php endforeach; ?>
       </select>
 
       <label for="commune">Chọn xã:</label>
-      <select id="commune">
+      <select id="commune" name="commune">
       <?php foreach ($data['commune'] as $key => $value): ?>
           <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
         <?php endforeach; ?>
