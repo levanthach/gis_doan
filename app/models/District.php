@@ -23,6 +23,12 @@ class District {
 		return $this->db->resultSet();
 	}
 
+	public function getDistrictsByProvince($province_id)
+	{
+        $this->db->query("SELECT * FROM {$this->table_province} WHERE province_id = {$province_id}");
+		return $this->db->resultSet();
+	}
+
 	public function store($name, $province_id)
 	{
 		$this->db->query("INSERT INTO {$this->table} (name, province_id) VALUES (:name, :province_id)");

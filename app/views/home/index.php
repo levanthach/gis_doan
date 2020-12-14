@@ -81,6 +81,7 @@
     <div class="select-option">
       <label for="province">Chọn tỉnh:</label>
       <select id="province" name="province">
+        <option value="">--- Chọn Tỉnh ---</option>
         <?php foreach ($data['province'] as $key => $value): ?>
           <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
         <?php endforeach; ?>
@@ -88,16 +89,12 @@
 
       <label for="district">Chọn huyện:</label>
       <select id="district" name="district">
-        <?php foreach ($data['district'] as $key => $value): ?>
-          <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
-        <?php endforeach; ?>
+        <option value="" id="select-district">--- Chưa chọn Tỉnh ---</option>
       </select>
 
       <label for="commune">Chọn xã:</label>
       <select id="commune" name="commune">
-      <?php foreach ($data['commune'] as $key => $value): ?>
-          <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
-        <?php endforeach; ?>
+          <option value="" id="select-commune">--- Chưa chọn Quận/Huyện ---</option>
       </select>
       <span style="float: right;">
             <label for="time">Thời gian:</label>
