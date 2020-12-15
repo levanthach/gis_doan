@@ -1,14 +1,20 @@
 
 $(document).ready(function(){  
-    var val_province = "0";
-    var val_district = "1";
-    var val_commune = "1";
-    $('#province option[value='+ val_province +']').attr('selected','selected');
-    $('#district option[value='+ val_province +']').attr('selected','selected');
-    $('#commune option[value='+ val_province +']').attr('selected','selected');
+    // var val_province = "0";
+    // var val_district = "1";
+    // var val_commune = "1";
+    // $('#province option[value='+ val_province +']').attr('selected','selected');
+    // $('#district option[value='+ val_province +']').attr('selected','selected');
+    // $('#commune option[value='+ val_province +']').attr('selected','selected');
 
     $('#province').change(function(){  
-         var province_id = $(this).val();  
+        var province_id = $(this).val();
+        $('#district').empty();
+        var str_district = "<option value=''>--- Chọn Quận/Huyện ---</option>";
+        $("#district").append(str_district);
+        $('#commune').empty();
+        var str_commune = "<option value=''>--- Chưa chọn Quận/Huyện ---</option>";
+        $("#commune").append(str_commune);
          $.ajax({  
                 url:"../app/controllers/processController.php?action=district",  
                 method:"POST",  
@@ -31,6 +37,9 @@ $(document).ready(function(){
 
     $('#district').change(function(){  
         var district_id = $(this).val();  
+        $('#commune').empty();
+        var str_commune = "<option value=''>--- Chọn Xã/Phường ---</option>";
+        $("#commune").append(str_commune);
         $.ajax({  
                url:"../app/controllers/processController.php?action=commune",  
                method:"POST",  
