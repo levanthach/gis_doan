@@ -1,0 +1,62 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "ARCGIS 2D by VT3 team",
+    "version": "1.0.0",
+    "title": "JSON FROM API",
+    "contact": {
+      "email": "lethach150699@gmail.com"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/gis_doan/app/views/home",
+  "tags": [
+    {
+      "name": "GEOJSON DATA",
+      "description": "Everything about GeoJson data"
+    }
+  ],
+  "paths": {
+    "/api.php?name=": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all data GeoJson",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "description": "Enter input parametter (Ex: spaghetti_geojson)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get GeoJson data successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "FeatureCollection"
+                },
+                "metadata": {
+                  "type": "string",
+                  "example": "..."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Invalid input parametter"
+          }
+        }
+      }
+    }
+  }
+}
