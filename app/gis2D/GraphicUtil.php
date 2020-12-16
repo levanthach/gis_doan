@@ -7,8 +7,8 @@ class GraphicUtil
         return array(
             "geometry" => array(
                 "type" => "point",
-                "longitude" => $attribute['x'],
-                "latitude" => $attribute['y']
+                "longitude" => $attribute['longs'],
+                "latitude" => $attribute['lats']
             ),
             "symbol" => array(
                 "type" => "simple-marker",
@@ -19,8 +19,8 @@ class GraphicUtil
                 )
             ),
             "attributes" => array(
-                "name" => $attribute['name'],
-                "location" => $attribute['location']
+                "name" => 'name',
+                "location" => 'location'
             ),
             "popupTemplate" => array(
                 "title" => "{name}",
@@ -32,14 +32,14 @@ class GraphicUtil
     public static function generate2DLine($attribute, $exitedLine = null)
     {
         if (!empty($exitedLine)) {
-            $exitedLine['geometry']['paths'][] = array($attribute['x'], $attribute['y']);
+            $exitedLine['geometry']['paths'][] = array($attribute['longs'], $attribute['lats']);
             return $exitedLine;
         }
         return array (
             "geometry" => array (
                 "type"=>"polyline",
                 "paths"=> array (
-                    array($attribute['x'], $attribute['y'])
+                    array($attribute['longs'], $attribute['lats'])
                 )
             ),
             "symbol" => array(
@@ -48,8 +48,8 @@ class GraphicUtil
                 "width" => 1
             ),
             "attributes" => array(
-                "name" => $attribute['name'],
-                "description" => $attribute['description']
+                "name" => 'name',
+                "description" => 'description'
             ),
             "popupTemplate" => array(
                 "title" => "Line {name}",
@@ -61,14 +61,14 @@ class GraphicUtil
     public static function generate2DPolygon($attribute, $exitedPolygon = null)
     {
         if (!empty($exitedPolygon)) {
-            $exitedPolygon['geometry']['rings'][] = array($attribute['x'], $attribute['y']);
+            $exitedPolygon['geometry']['rings'][] = array($attribute['longs'], $attribute['lats']);
             return $exitedPolygon;
         }
         return array (
             "geometry" => array (
                 "type"=>"polygon",
                 "rings"=> array (
-                    array($attribute['x'], $attribute['y'])
+                    array($attribute['longs'], $attribute['lats'])
                 )
             ),
             "symbol" => array(
@@ -77,8 +77,8 @@ class GraphicUtil
                 "width" => 1
             ),
             "attributes" => array(
-                "name" => $attribute['name'],
-                "description" => $attribute['description']
+                "name" => 'name',
+                "description" => 'description'
             ),
             "popupTemplate" => array(
                 "title" => "Polygon {name}",

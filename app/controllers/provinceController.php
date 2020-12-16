@@ -1,5 +1,4 @@
 <?php
-
 class provinceController extends Controller {
 
 	public function index()
@@ -55,7 +54,5 @@ class provinceController extends Controller {
 
 		$this->redirect('province');
 	}
-
-
 
 }

@@ -35,8 +35,8 @@
 		var view = new MapView({
 		container: "viewDiv",
 		map: map,
-		center: [106.8033387, 10.8739831],
-		zoom: 16,
+		center: [107.99404907227, 14.368187904358],
+		zoom: 12,
           highlightOptions: {
             color: "blue"
           }
@@ -47,17 +47,17 @@
           },
           responseType: "json"
         };
-		esriRequest('api.php?name=spaghetti_json', options).then(function (response) {
-			var graphicsLayer = new GraphicsLayer();
-            //console.log("response", response);
-            response.data.forEach(function(graphicJson){
-	            var gp = new Graphic(graphicJson);
-				graphicsLayer.add(gp);
-            });
-			map.add(graphicsLayer);
-		});
+		// esriRequest('api.php?name=spaghetti_json', options).then(function (response) {
+		// 	var graphicsLayer = new GraphicsLayer();
+    //         //console.log("response", response);
+    //         response.data.forEach(function(graphicJson){
+	  //           var gp = new Graphic(graphicJson);
+		// 		graphicsLayer.add(gp);
+    //         });
+		// 	map.add(graphicsLayer);
+		// });
 		const geojsonLayer = new GeoJSONLayer({
-          url: "api.php?name=spaghetti_geojson"
+          url: "../app/views/home/api.php?name=spaghetti_geojson"
         });
         geojsonLayer.renderer = {
           type: "simple",
@@ -76,6 +76,38 @@
   </script>
 </head>
 <body>
+<div class="wrapper"> 
+  <div class="top-bar">
+    <div class="select-option">
+      <label for="province">Chọn tỉnh:</label>
+      <select id="province" name="province">
+        <option value="">--- Chọn Tỉnh ---</option>
+        <?php foreach ($data['province'] as $key => $value): ?>
+          <option value="<?= $value['id']; ?>"><?= $value['name']; ?></option>
+        <?php endforeach; ?>
+      </select>
+
+      <label for="district">Chọn huyện:</label>
+      <select id="district" name="district">
+        <option value="" id="select-district">--- Chưa chọn Tỉnh ---</option>
+      </select>
+
+      <label for="commune">Chọn xã:</label>
+      <select id="commune" name="commune">
+          <option value="" id="select-commune">--- Chưa chọn Quận/Huyện ---</option>
+      </select>
+      <span style="float: right;">
+            <label for="time">Thời gian:</label>
+            <select id="time">
+              <?php foreach ($data['time'] as $key => $value): ?>
+                <option value="<?= $value['time'] ?>"><?= $value['time'] ?></option>
+              <?php endforeach; ?>
+            </select>
+      </span>
+  </div>
   <div id="viewDiv"></div>
+</div>
 </body>
+<script src="<?= BASEURL;  ?>/assets/js/jquery.min.js"></script>
+<script src="<?= BASEURL;  ?>/assets/js/custom.js"></script>
 </html>

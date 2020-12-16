@@ -1,4 +1,9 @@
 <?php
+$db_host = 'localhost';
+$db_user = 'population_user';
+$db_pass = 'zxcv1234@';
+$db_name = 'population';
+
 
 class Connection
 {

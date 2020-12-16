@@ -14,7 +14,7 @@
                     <thead>
                       <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Thuộc xã phườnhg</th>
+                        <th scope="col">Thuộc xã phường</th>
                         <th scope="col">Thời gian</th>
                         <th scope="col">Dân số</th>
                         <th scope="col">Hành động</th>
@@ -25,14 +25,14 @@
                       foreach ($data['population'] as $key => $value): ?>
                       <tr>
                         <td scope="row"><?= ++$key ?></td>
-                        <td><?= $value['name']; ?></td>
-                        <td><?php foreach ($data['commune'] as $key_pro => $value_dis) :
-                                if ($value['commune'] == $value_dis['id']) : 
-                                echo $value_dis['name'];
+                        <td><?php foreach ($data['commune'] as $key_pro => $value_com) :
+                                if ($value['commune_id'] == $value_com['id']) : 
+                                echo $value_com['name'];
                                 endif;
                                 endforeach;
                         ?></td>
-                        <td><?= $value['acreage']; ?></td>
+                        <td><?= $value['time']; ?></td>
+                        <td><?= $value['count']; ?></td>
 
         			
         				 <td>

@@ -15,6 +15,12 @@ class Population {
 	{
 		$this->db->query("SELECT * FROM {$this->table}");
 		return $this->db->resultSet();
+	}
+	
+	public function getTime()
+	{
+		$this->db->query("SELECT DISTINCT time FROM {$this->table}");
+		return $this->db->resultSet();
     }
     
     public function getAllCommune()
@@ -25,11 +31,11 @@ class Population {
 
 	public function store($name, $commune_id, $time, $count)
 	{
-		$this->db->query("INSERT INTO {$this->table} (name, commune_id, time, count) VALUES (:name, :commune_id , :acreage, :time, :count)");
+		$this->db->query("INSERT INTO {$this->table} (name, commune_id, time, count) VALUES (:name, :commune_id , :time, :count)");
 		
         $this->db->bind(':name', $name);
         $this->db->bind(':commune_id', $commune_id);
-        $this->db->bind(':acreage', $time);
+        $this->db->bind(':time', $time);
         $this->db->bind(':count', $count);
 
 		return $this->db->execute();
