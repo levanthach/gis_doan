@@ -8,7 +8,6 @@ class GeoJsonUtil {
         }
         return array(
             "type" => "Feature",
-<<<<<<< HEAD
             "properties" => array(
                 "id" => $attribute['id'],
                 "name" => $attribute['name'],
@@ -17,14 +16,6 @@ class GeoJsonUtil {
                 "population" => $attribute['count'],
                 "acreage" => $attribute['acreage']." km2",
                 "density" => $attribute['density']." người/km2"
-=======
-            "properties" => array (
-             "id" =>$attribute['polygon_id'],
-             "commune_id" => $attribute['commune_id'],
-             "time" => $attribute['time'],
-             "name" => $attribute['name'],
-             "density" => $attribute['density']
->>>>>>> vy_dev
             ),
             "geometry" => array (
                 "type" => "Polygon",
