@@ -47,30 +47,30 @@
           },
           responseType: "json"
         };
-		// esriRequest('api.php?name=spaghetti_json', options).then(function (response) {
-		// 	var graphicsLayer = new GraphicsLayer();
-    //         //console.log("response", response);
-    //         response.data.forEach(function(graphicJson){
-	  //           var gp = new Graphic(graphicJson);
-		// 		graphicsLayer.add(gp);
-    //         });
-		// 	map.add(graphicsLayer);
-		// });
-		const geojsonLayer = new GeoJSONLayer({
-          url: "../app/views/home/api.php?name=spaghetti_geojson"
-        });
-        geojsonLayer.renderer = {
-          type: "simple",
-          symbol: {
-					type: "simple-fill",
-					color: [227, 139, 79, 0.4],
-					outline: {
-						color: [255, 255, 255],
-						width: 1
-					}
-				}
-        };
-        map.add(geojsonLayer);
+		esriRequest('../app/views/home/api.php?name=spaghetti_json', options).then(function (response) {
+			var graphicsLayer = new GraphicsLayer();
+            //console.log("response", response);
+            response.data.forEach(function(graphicJson){
+	            var gp = new Graphic(graphicJson);
+				graphicsLayer.add(gp);
+            });
+			map.add(graphicsLayer);
+		});
+		// const geojsonLayer = new GeoJSONLayer({
+  //         url: "../app/views/home/api.php?name=spaghetti_geojson"
+  //       });
+  //       geojsonLayer.renderer = {
+  //         type: "simple",
+  //         symbol: {
+		// 			type: "simple-fill",
+		// 			color: [227, 139, 79, 0.4],
+		// 			outline: {
+		// 				color: [255, 255, 255],
+		// 				width: 1
+		// 			}
+		// 		}
+  //       };
+  //       map.add(geojsonLayer);
         view.popup.defaultPopupTemplateEnabled = true;
     });
   </script>
