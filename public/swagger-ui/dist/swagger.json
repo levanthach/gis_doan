@@ -29,7 +29,7 @@
           {
             "in": "query",
             "name": "name",
-            "description": "Enter input parametter (Ex: spaghetti_geojson)",
+            "description": "Enter input parametter (Ex: spaghetti_json)",
             "schema": {
               "type": "string"
             }
