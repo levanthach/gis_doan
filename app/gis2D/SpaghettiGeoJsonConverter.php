@@ -5,14 +5,13 @@ class SpaghettiGeoJsonConverter implements BaseConverter
     function getJsonData()
     {
         $polygon_query = <<<EOI
-        SELECT td.*,de.time,de.density,de.name
+        SELECT td.*,de.time,de.density,de.name,de.acreage,de.count
         FROM (select p.polygon_id,p.longs,p.lats,po.* from point p, polygon po
             where p.polygon_id = po.id
-            order by p.id) td LEFT JOIN (select co.id,co.name,pop.time,round(pop.count/co.acreage,0) as density
+            order by p.id) td LEFT JOIN (select co.*,pop.count,pop.time,round(pop.count/co.acreage,0) as density
                                         from population pop, commune co
                                         where pop.commune_id=co.id) de
         ON td.commune_id=de.id
-        ORDER BY td.id
 EOI;
         $polygons = Connection::query($polygon_query);
         $current_polygon_id = null;

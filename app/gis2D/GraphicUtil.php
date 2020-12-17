@@ -73,16 +73,20 @@ class GraphicUtil
             ),
             "symbol" => array(
                 "type" => "simple-fill",
-                "color" => [226, 119, 40, 0.5],
+                "color" => [50*(1+($attribute['density']/1000)), 200, 0,0.4],
                 "width" => 1
             ),
             "attributes" => array(
-                "name" => 'name',
-                "description" => 'description'
+                "commune_id" => $attribute['commune_id'],
+                "name" => $attribute['name'],
+                "time" => $attribute['time'],
+                "population" => $attribute['count']." người",
+                "acreage" => $attribute['acreage']." km2",
+                "density" => $attribute['density']." người/km2"
             ),
             "popupTemplate" => array(
-                "title" => "Polygon {name}",
-                "content" => "<table class='esri-widget__table'><tr><th>Name</th><th>Description</th></tr><tr><td>{name}</td><td>{description}</td></tr></table>"
+                "title" => "{name}",
+                "content" => "<table class='esri-widget__table'><tr><th>Name</th><th>Description</th></tr><tr><td>Commune_id</td><td>{commune_id}</td></tr><tr><td>Population</td><td>{population}</td></tr><tr><td>Acreage</td><td>{acreage}</td></tr><tr><td>Density</td><td>{density}</td></tr><tr><td>Time</td><td>{time}</td></tr></table>"
             )
         );
     }
