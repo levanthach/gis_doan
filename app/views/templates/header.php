@@ -11,7 +11,6 @@
   <link href="<?= BASEURL;  ?>/assets/assets/css/pace.min.css" rel="stylesheet" />
   <script src="<?= BASEURL;  ?>/assets/js/pace.min.js"></script>
   <link rel="stylesheet" href="<?= BASEURL;  ?>/assets/plugins/summernote/dist/summernote-bs4.css"/>
-  <link rel="icon" href="<?= BASEURL;  ?>/assets/images/favicon.ico" type="image/x-icon">
   <link href="<?= BASEURL;  ?>/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
   <link href="<?= BASEURL;  ?>/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
   <link href="<?= BASEURL;  ?>/assets/css/bootstrap.min.css" rel="stylesheet" />
