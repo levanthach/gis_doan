@@ -94,35 +94,35 @@ class GraphicUtil
     public static function getColorByDensity($denstiy) 
     {
         if ($denstiy < 500) {
-            return '#f7d794';
+            return "#fee8c8";
         } else if (500 <= $denstiy && $denstiy < 1000) {
-            return '#FDD49E';
+            return "#FDD49E";
         } else if (1000 <= $denstiy && $denstiy < 1500) {
-            return '#FDBB84';
+            return "#FDBB84";
         } else if (1500 <= $denstiy && $denstiy < 2000) {
-            return '#FC8D59';
+            return "#FC8D59";
         } else if (2000 <= $denstiy && $denstiy < 2500) {
-            return '#EF6548';
+            return "#EF6548";
         } else if (2500 <= $denstiy && $denstiy < 3000) {
-            return '#D7301F';
+            return "#EE5A24";
         } else if (3000 <= $denstiy && $denstiy < 3500) {
-            return '#990000';
+            return "#EE5A24";
         } else if (3500 <= $denstiy && $denstiy < 4000) {
-            return '';
+            return '#EAB543';
         } else if (4000 <= $denstiy && $denstiy < 4500) {
-            return '';
+            return '#ffaf40';
         } else if (4500 <= $denstiy && $denstiy < 5000) {
-            return '';
+            return '#ff9f1a';
         } else if (5000 <= $denstiy && $denstiy < 5500) {
-            return '';
+            return '#cd6133';
         } else if (5500 <= $denstiy && $denstiy < 6000) {
-            return '';
+            return '#ff5252';
         } else if (6000 <= $denstiy && $denstiy < 6500) {
-            return '';
+            return '#ff4d4d';
         } else if (6500 <= $denstiy && $denstiy < 7000) {
-            return '';
+            return '#ff3838';
         } else {
-            return '';
+            return '#b33939';
         }
     }
 }

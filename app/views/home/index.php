@@ -19,7 +19,17 @@
       left: 5%;
       right: 5%;
       bottom: 20px;
+      width: 600px;
     }
+
+    .esri-time-slider__animation {
+      display: none;
+    }
+    
+    .esri-time-slider__time-extent {
+      display: none!important;
+    }
+    
   </style>
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
@@ -65,11 +75,11 @@
         loop: true,
         fullTimeExtent: { // entire extent of the timeSlider
           start: "2017",
-          end: "2019"
+          end: "2029"
         },
         values:[ // location of timeSlider thumbs
           new Date(2017, 0, 1),
-          new Date(2019, 1, 1)
+          new Date(2017, 0, 1)
         ]
       });
 
@@ -79,6 +89,7 @@
         response.data.forEach(function(graphicJson) {
           var gp = new Graphic(graphicJson);
           graphicsLayer.add(gp);
+          graphicsLayer.opacity = 0.6;
         });
         map.add(graphicsLayer);
       });
