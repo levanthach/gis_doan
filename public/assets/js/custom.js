@@ -1,4 +1,3 @@
-
 $(document).ready(function(){  
     // var val_province = "0";
     // var val_district = "1";
@@ -59,4 +58,27 @@ $(document).ready(function(){
                }  
         });  
    });  
+
+    $('#timeSlider').horizontalTimeline({
+        dateDisplay: "year"
+    });
+
+
+    $('#timeSlider').on("eventChanged.horizontalTimeline", function(event){
+        var time; 
+        time = event.currentEventDate;
+        $.ajax({  
+            url:"../app/views/home/api.php",  
+            method:"POST",  
+            data:{
+                time: time,
+                name: 'spaghetti_json'
+            },  
+            dataType: 'json',
+            success:function(data){  
+                //location.reload();
+            } 
+        });  
+    });
+
 });  

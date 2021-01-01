@@ -9,7 +9,13 @@ function print_json_response($object) {
     return json_encode($object);
 }
 $name = $_REQUEST['name'];
-$time = 2017;
+if (isset($_POST['time'])) {
+    $get_year = $_POST['time'];
+    $get_year = str_replace('1/1/', '', $get_year);
+    $time = $get_year;
+} else {
+    $time = 2017;
+}
 switch ($name) {
     case 'spaghetti_json':
         $converter = new SpaghettiJsonConverter();
