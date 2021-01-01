@@ -73,7 +73,7 @@ class GraphicUtil
             ),
             "symbol" => array(
                 "type" => "simple-fill",
-                "color" => [50*(1+($attribute['density']/1000)), 200, 0,0.4],
+                "color" => GraphicUtil::getColorByDensity($attribute['density']),
                 "width" => 1
             ),
             "attributes" => array(
@@ -89,5 +89,40 @@ class GraphicUtil
                 "content" => "<table class='esri-widget__table'><tr><th>Name</th><th>Description</th></tr><tr><td>Commune_id</td><td>{commune_id}</td></tr><tr><td>Population</td><td>{population}</td></tr><tr><td>Acreage</td><td>{acreage}</td></tr><tr><td>Density</td><td>{density}</td></tr><tr><td>Time</td><td>{time}</td></tr></table>"
             )
         );
+    }
+
+    public static function getColorByDensity($denstiy) 
+    {
+        if ($denstiy < 500) {
+            return '#f7d794';
+        } else if (500 <= $denstiy && $denstiy < 1000) {
+            return '#FDD49E';
+        } else if (1000 <= $denstiy && $denstiy < 1500) {
+            return '#FDBB84';
+        } else if (1500 <= $denstiy && $denstiy < 2000) {
+            return '#FC8D59';
+        } else if (2000 <= $denstiy && $denstiy < 2500) {
+            return '#EF6548';
+        } else if (2500 <= $denstiy && $denstiy < 3000) {
+            return '#D7301F';
+        } else if (3000 <= $denstiy && $denstiy < 3500) {
+            return '#990000';
+        } else if (3500 <= $denstiy && $denstiy < 4000) {
+            return '';
+        } else if (4000 <= $denstiy && $denstiy < 4500) {
+            return '';
+        } else if (4500 <= $denstiy && $denstiy < 5000) {
+            return '';
+        } else if (5000 <= $denstiy && $denstiy < 5500) {
+            return '';
+        } else if (5500 <= $denstiy && $denstiy < 6000) {
+            return '';
+        } else if (6000 <= $denstiy && $denstiy < 6500) {
+            return '';
+        } else if (6500 <= $denstiy && $denstiy < 7000) {
+            return '';
+        } else {
+            return '';
+        }
     }
 }
