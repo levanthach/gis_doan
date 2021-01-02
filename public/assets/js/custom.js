@@ -1,4 +1,3 @@
-
 $(document).ready(function(){  
     // var val_province = "0";
     // var val_district = "1";
@@ -59,4 +58,60 @@ $(document).ready(function(){
                }  
         });  
    });  
+
+    $('#timeSlider').horizontalTimeline({
+        dateDisplay: "year"
+    });
+
+    $('#timeSlider').on("eventChanged.horizontalTimeline", function(event){
+        var time; 
+        time = event.currentEventDate;
+        $.ajax({  
+            url:"../app/views/home/api.php",  
+            method:"POST",  
+            data:{
+                time: time,
+                name: 'spaghetti_json'
+            },  
+            dataType: 'json',
+            success:function(data){  
+                  require([
+                    "esri/Map",
+                    "esri/views/MapView",
+                    "esri/Graphic",
+                    "esri/layers/GraphicsLayer",
+                  ], function(Map, MapView, Graphic, GraphicsLayer) {
+                    var map = new Map({
+                      basemap: "topo-vector",
+                      operationalLayers: [],
+                    });
+                    map.on("load", function() {
+                      map.graphics.enableMouseEvents();
+                    });
+              
+                    var view = new MapView({
+                      container: "viewDiv",
+                      map: map,
+                      center: [107.99404907227, 14.368187904358],
+                      zoom: 12,
+                      highlightOptions: {
+                        color: "blue"
+                      }
+                    });
+              
+                    var graphicsLayer = new GraphicsLayer();
+                        data.forEach(function(graphicJson) {
+                        var gp = new Graphic(graphicJson);
+                        graphicsLayer.add(gp
+                        );
+                        graphicsLayer.opacity = 0.6;
+                        });
+                    map.add(graphicsLayer);
+              
+                    view.popup.defaultPopupTemplateEnabled = true;
+                  });
+            } 
+        });  
+    });
+
 });  
