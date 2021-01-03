@@ -79,7 +79,7 @@
           <option value="" id="select-commune">--- Chưa chọn Quận/Huyện ---</option>
         </select>
         <span style="float: right;">
-          <label for="density">Mật độ dân số: người/km2</label>
+          <!-- <label for="density">Mật độ dân số: người/km2</label> -->
         </span>
       </div>
       <div id="viewDiv"></div>
@@ -93,7 +93,9 @@
           </ol>
         </div>
       </div>
-
+      <div class="color-note">
+            <img src="<?= BASEURL;  ?>/assets/images/note.png" ? alt="note-color">
+      </div>
     </div>
 </body>
 <script src="<?= BASEURL;  ?>/assets/js/jquery.min.js"></script>
