@@ -78,9 +78,6 @@
         <select id="commune" name="commune">
           <option value="" id="select-commune">--- Chưa chọn Quận/Huyện ---</option>
         </select>
-        <span style="float: right;">
-          <!-- <label for="density">Mật độ dân số: người/km2</label> -->
-        </span>
       </div>
       <div id="viewDiv"></div>
       <div class="horizontal-timeline" id="timeSlider">
