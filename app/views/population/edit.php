@@ -26,12 +26,12 @@
                   
 	                  <div class="form-group">
 	                    <label for="input-1">Thời gian</label>
-	                    <input type="text" class="form-control" id="input-1" placeholder="Thời gian" name="time" value="<?= $data['commune']['time'] ?>">
+	                    <input type="text" class="form-control" id="input-1" placeholder="Thời gian" name="time" value="<?= $data['population']['time'] ?>">
                     </div>
                     
                     <div class="form-group">
 	                    <label for="input-1">Dân số</label>
-	                    <input type="text" class="form-control" id="input-1" placeholder="Dân số" name="count" value="<?= $data['commune']['count'] ?>">
+	                    <input type="text" class="form-control" id="input-1" placeholder="Dân số" name="count" value="<?= $data['population']['count'] ?>">
 	                  </div>
 		             
 	                   <div class="form-footer">
