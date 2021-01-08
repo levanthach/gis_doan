@@ -19,7 +19,7 @@ class Population {
 	
 	public function getTime()
 	{
-		$this->db->query("SELECT DISTINCT time FROM {$this->table}");
+		$this->db->query("SELECT DISTINCT time FROM {$this->table} ORDER BY time ASC");
 		return $this->db->resultSet();
     }
     

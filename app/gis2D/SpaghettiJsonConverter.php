@@ -2,68 +2,34 @@
 
 class SpaghettiJsonConverter implements BaseConverter
 {
-    function getJsonData()
+    function getJsonData($time)
     {
         $result  = array();
-        $point_query = <<<EOI
-            select p.* from tsp_point p
-            left join tsp_line_point lp on lp.idp = p.idp
-            left join tsp_polygon_point pp on pp.idp = p.idp
-            where lp.idp is null and pp.idp is null
-EOI;
-        $points = Connection::query($point_query);
-        foreach ($points as $point) {
-            $result[] = GraphicUtil::generate2DPoint($point);
-        }
-        $line_query = <<<EOI
-        select lp.idl, l.name, l.description, p.idp, p.x, p.y, lp.seq 
-        from tsp_line_point lp 
-        left join tsp_line l on lp.idl = l.idl
-        left join tsp_point p on lp.idp = p.idp
-        order by l.idl, lp.seq
-EOI;
-        $lines = Connection::query($line_query);
-        $current_line_id = null;
-        $current_line = null;
-        foreach ($lines as $line) {
-            if ($current_line_id != $line['idl']){
-                if($current_line != null) {
-                    $result[] = $current_line;
+        $polygon_query = "SELECT td.*,de.time,de.density,de.name,de.acreage,de.count
+                        FROM (select p.polygon_id,p.longs,p.lats,po.* from point p, polygon po
+                        WHERE p.polygon_id = po.id
+                        order by p.id) td LEFT JOIN (select co.*,pop.count,pop.time,round(pop.count/co.acreage,0) as density
+                        from population pop, commune co
+                        where pop.commune_id=co.id) de
+                        ON td.commune_id=de.id 
+                        WHERE de.time = " . $time;
+        $polygons = Connection::query($polygon_query);
+        $current_polygon_id = null;
+        $current_polygon = null;
+        foreach ($polygons as $polygon) {
+            if ($current_polygon_id != $polygon['id']) {
+                if ($current_polygon != null) {
+                    $result[] = $current_polygon;
                 }
-                $current_line = GraphicUtil::generate2DLine($line);
-                $current_line_id = $line['idl'];
+                $current_polygon = GraphicUtil::generate2DPolygon($polygon);
+                $current_polygon_id = $polygon['id'];
             } else {
-                $current_line = GraphicUtil::generate2DLine($line, $current_line);;
+                $current_polygon = GraphicUtil::generate2DPolygon($polygon, $current_polygon);;
             }
         }
-        if($current_line != null) {
-            $result[] = $current_line;
+        if ($current_polygon != null) {
+            $result[] = $current_polygon;
         }
-
-//         $polygon_query = <<<EOI
-//         select pp.idpo, po.name, po.description, p.idp, p.x, p.y, pp.seq 
-//         from tsp_polygon_point pp
-//         left join tsp_polygon po on pp.idpo = po.idpo
-//         left join tsp_point p on pp.idp = p.idp
-//         order by po.idpo, pp.seq
-// EOI;
-//         $polygons = Connection::query($polygon_query);
-//         $current_polygon_id = null;
-//         $current_polygon = null;
-//         foreach ($polygons as $polygon) {
-//             if ($current_polygon_id != $polygon['idpo']){
-//                 if($current_polygon != null) {
-//                     $result[] = $current_polygon;
-//                 }
-//                 $current_polygon = GraphicUtil::generate2DPolygon($polygon);
-//                 $current_polygon_id = $polygon['idpo'];
-//             } else {
-//                 $current_polygon = GraphicUtil::generate2DPolygon($polygon, $current_polygon);;
-//             }
-//         }
-//         if($current_polygon != null) {
-//             $result[] = $current_polygon;
-//         }
 
         return $result;
     }
