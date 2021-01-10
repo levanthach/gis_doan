@@ -77,7 +77,7 @@
     
   <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
     <div class="brand-logo">
-      <a href="<?= BASEURL;  ?>/admin/homepage">
+      <a href="<?= BASEURL;  ?>">
         <img src="<?= BASEURL;  ?>/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
         <h5 class="logo-text">Admin GIS DÂN SỐ</h5>
       </a>
